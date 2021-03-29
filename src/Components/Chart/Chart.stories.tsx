@@ -6,6 +6,83 @@ import Button from '../OpiumButton'
 
 import { ETheme, sectionThemes } from '../../Constants/Types/theme.types'
 
+const data = [
+  {
+    'data1': 0,
+    'data2': 100,
+  },
+  {
+    'data1': 5,
+    'data2': 95,
+  },
+  {
+    'data1': 10,
+    'data2': 80,
+  },
+  {
+    'data1': 15,
+    'data2': 75,
+  },
+  {
+    'data1': 20,
+    'data2': 70,
+  },
+  {
+    'data1': 30,
+    'data2': 65,
+  },
+
+  {
+    'data1': 35,
+    'data2': 60,
+  },
+  {
+    'data1': 40,
+    'data2': 55,
+  },
+  {
+    'data1': 45,
+    'data2': 50,
+  },
+  {
+    'data1': 50,
+    'data2': 45,
+  },
+
+  {
+    'data1': 55,
+    'data2': 40,
+  },
+  {
+    'data1': 60,
+    'data2': 35,
+  },
+  {
+    'data1': 65,
+    'data2': 30,
+  },
+  {
+    'data1': 70,
+    'data2': 25,
+  },
+  {
+    'data1': 75,
+    'data2': 20,
+  },
+  {
+    'data1': 80,
+    'data2': 15,
+  },
+  {
+    'data1': 85,
+    'data2': 10,
+  },
+  {
+    'data1': 100,
+    'data2': 5,
+  },
+]
+
 export const chart = () => {
   const message = text('Text', 'Alert')
 
@@ -35,6 +112,11 @@ export const chart = () => {
       </div>
       <Chart
         theme={theme}
+        data={data}
+        data1Key={'data1'}
+        data2Key={'data2'}
+        width={565}
+        height={265}
       />
     </div>
   )

@@ -9,83 +9,6 @@ import {
   ComposedChart,
 } from 'recharts'
 
-const data = [
-  {
-    'data1': 0,
-    'data2': 100,
-  },
-  {
-    'data1': 5,
-    'data2': 95,
-  },
-  {
-    'data1': 10,
-    'data2': 80,
-  },
-  {
-    'data1': 15,
-    'data2': 75,
-  },
-  {
-    'data1': 20,
-    'data2': 70,
-  },
-  {
-    'data1': 30,
-    'data2': 65,
-  },
-
-  {
-    'data1': 35,
-    'data2': 60,
-  },
-  {
-    'data1': 40,
-    'data2': 55,
-  },
-  {
-    'data1': 45,
-    'data2': 50,
-  },
-  {
-    'data1': 50,
-    'data2': 45,
-  },
-
-  {
-    'data1': 55,
-    'data2': 40,
-  },
-  {
-    'data1': 60,
-    'data2': 35,
-  },
-  {
-    'data1': 65,
-    'data2': 30,
-  },
-  {
-    'data1': 70,
-    'data2': 25,
-  },
-  {
-    'data1': 75,
-    'data2': 20,
-  },
-  {
-    'data1': 80,
-    'data2': 15,
-  },
-  {
-    'data1': 85,
-    'data2': 10,
-  },
-  {
-    'data1': 100,
-    'data2': 5,
-  },
-]
-
 import { generateRenderProps } from '../../Utils/helpers'
 import { ETheme } from '../../Constants/Types/theme.types'
 
@@ -94,10 +17,25 @@ import './Chart.scss'
 export type Props = {
 /** Define theme */
 theme?: ETheme
+/** Data is an array with objects (expl. [{data1: '1', data2: '2'}]) */
+data: any[]
+/** Key in data array for one data (pink) */
+data1Key: string
+/** Key in data array for second data (blue) */
+data2Key: string
+/** Width of the chart */
+width: number
+/** Height of the chart */
+height: number
 }
 
 const defaultProps: Props = {
   theme: ETheme.DARK,
+  data: [],
+  data1Key: '',
+  data2Key: '',
+  width: 250,
+  height: 100
 }
 
 const CustomizedActiveDot = React.forwardRef((props: { cx: number, cy: number, fill: string}, ref) => {
@@ -156,6 +94,11 @@ const Chart: React.FC<Props> = (props: Props) => {
 
   const {
     theme,
+    data,
+    data1Key,
+    data2Key,
+    width,
+    height
   } = renderProps
 
   const tickChanger = (tickItem: any) => {
@@ -165,7 +108,7 @@ const Chart: React.FC<Props> = (props: Props) => {
 
   return (
     <div className={`CustomChart color-scheme-${theme}`}>
-      <ComposedChart width={565} height={265} data={data} margin={{ top: 25, right: 30, left: 20, bottom: 5 }}>
+      <ComposedChart width={width} height={height} data={data} margin={{ top: 25, right: 30, left: 20, bottom: 5 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#F6029C" stopOpacity={0.15}/>
@@ -188,7 +131,7 @@ const Chart: React.FC<Props> = (props: Props) => {
         }
         <Area
           type="monotone"
-          dataKey="data1"
+          dataKey={data1Key}
           strokeWidth={2}
           fillOpacity={1}
           fill="url(#colorUv)"
@@ -200,7 +143,7 @@ const Chart: React.FC<Props> = (props: Props) => {
         />
         <Area
           type="monotone"
-          dataKey="data2"
+          dataKey={data2Key}
           strokeWidth={2}
           fillOpacity={1}
           fill="url(#colorPv)"
