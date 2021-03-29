@@ -5,7 +5,7 @@
   padding: 0 indent(2);
   border: 0 !important;
   position: relative;
-  margin: 0 !important;
+  margin: 0 0 16px 0 !important;
   top: -1px;
 
   &.color-scheme-#{map_get($theme, lightTheme)} {

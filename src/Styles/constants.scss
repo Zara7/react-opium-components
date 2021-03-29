@@ -173,7 +173,7 @@ $font-sizes-px: (
 }
 
 @mixin tabs-component($bg, $color, $border-color) {
-	background-color: $bg;
+	background-color: $bg !important;
 	color: $color;
 	border: 0px solid $border-color;
 	font-size: fzpx(label);
