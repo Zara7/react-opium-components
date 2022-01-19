@@ -28,6 +28,7 @@ export type Props = {
   className?: string
   /** Set component uncontrolled */
   uncontrolled?: boolean
+  dropdownTitle?: string
 }
 
 const defaultProps: Props = {
@@ -38,6 +39,7 @@ const defaultProps: Props = {
   ],
   className: '',
   title: '',
+  dropdownTitle: '',
   onClick: () => { },
   onSelect: (eventKey: any, event: BaseSyntheticEvent) => { },
 }
@@ -85,7 +87,7 @@ const DropdownSelector: FC<Props> = (props: Props) => {
   }
 
   const styledItem = {
-    backgroundColor: backgroundColor['primary'].value,
+    // backgroundColor: backgroundColor['primary'].value,
     // borderColor: borderColor['primary'].value,
     color: color['info'].value,
     // borderStyle: 'solid',
@@ -105,6 +107,7 @@ const DropdownSelector: FC<Props> = (props: Props) => {
         {title || selectorTitle}
       </Dropdown.Toggle>
       <Dropdown.Menu className={`color-scheme-${theme}`}>
+        <div className="dropdown-title">Title</div>
         {
           items.length ? items.map((item: any, idx: number) => (
             <Dropdown.Item
